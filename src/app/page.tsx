@@ -1,157 +1,166 @@
-import React from "react";
 import Link from "next/link";
-import { SiteHeader } from "@/components/shared/site-header";
-import { SiteFooter } from "@/components/shared/site-footer";
-import { ArrowRight, Sparkles, Shield, Zap, Wand2, Search, Type, PenTool } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Zap, Wand2, Search, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BentoGrid, BentoGridItem } from "@/components/shared/bento-grid";
 import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 flex flex-col">
-      <SiteHeader />
-
-      <main className="flex-grow pt-32 px-4 sm:px-6">
-        {/* Flat Hero Section */}
-        <section className="text-center py-20 md:py-32 max-w-4xl mx-auto space-y-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-            <Sparkles className="h-4 w-4 text-zinc-900 dark:text-zinc-100" />
-            <span>Power up your social presence</span>
+    <>
+      {/* Simplified Functional Hero Section */}
+      <section className="relative h-[calc(100vh-64px)] flex flex-col items-center justify-center container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Creative Toolkit for Content Creators</span>
+            </div>
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.1]">
-            Biến đổi văn bản, <br />
-            <span className="bg-gradient-to-r from-zinc-900 via-zinc-500 to-zinc-400 dark:from-zinc-100 dark:to-zinc-500 bg-clip-text text-transparent">
-               định hình phong cách
-            </span>
-          </h1>
-          
-          <p className="text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto font-medium leading-relaxed">
-            Công cụ chuyển đổi font chữ nghệ thuật chuyên nghiệp cho mạng xã hội. 
-            Đơn giản, tinh tế, và hoàn toàn miễn phí cho tất cả mọi người.
-          </p>
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-zinc-900 dark:text-zinc-100">
+              The Essential Arsenal <br className="hidden md:block" />
+              for Modern Creators.
+            </h1>
+            
+            <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto font-medium leading-relaxed">
+              Boost your creative workflow with professional tools for text transformation, 
+              design assets, and growth indicators. Simple, fast, and free forever.
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button asChild size="lg" className="h-14 px-8 rounded-2xl bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 text-lg font-bold group">
-              <Link href="/fancy-text">
-                Bắt đầu ngay
+              <Link href="#tools">
+                Explore Tools
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-14 px-8 rounded-2xl border-zinc-200 dark:border-zinc-800 text-lg font-semibold">
-               <Link href="#tools">Khám phá công cụ</Link>
+               <Link href="/fancy-text">Launch Fancy Text</Link>
             </Button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Discover Tools Bento Grid */}
-        <section id="tools" className="py-32 border-t border-zinc-200 dark:border-zinc-800">
-           <div className="max-w-7xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-               <h2 className="text-3xl md:text-5xl font-black tracking-tight">Hệ sinh thái công cụ</h2>
-               <p className="text-zinc-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
-                  Mọi thứ bạn cần để tạo dấu ấn riêng trên không gian số.
-               </p>
+      {/* Vibrant Tool Exhibition (Bento Grid) */}
+      <section id="tools" className="py-24 container mx-auto px-4">
+        <div className="space-y-16">
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight">Our Ecosystem</h2>
+            <p className="text-zinc-500 dark:text-zinc-400 text-lg max-w-xl mx-auto">
+              Everything you need to leave a mark on the digital landscape.
+            </p>
+          </div>
+
+          <BentoGrid className="max-w-6xl">
+            <Link href="/fancy-text" className="md:col-span-2 group">
+              <BentoGridItem
+                title="Fancy Text Decorator"
+                description="Transform your identity with aesthetic Unicode styles. Perfect for social bios and standout posts."
+                header={
+                  <div className="h-40 bg-violet-500/10 dark:bg-violet-500/5 rounded-xl flex items-center justify-center border border-violet-500/10 transition-colors group-hover:bg-violet-500/20">
+                    <Wand2 className="h-12 w-12 text-violet-500" />
+                  </div>
+                }
+                icon={<Wand2 className="h-4 w-4 text-violet-500" />}
+                className="h-full hover:border-violet-500/30 transition-all shadow-sm hover:shadow-md"
+              />
+            </Link>
+            
+            <div className="opacity-70 group">
+              <BentoGridItem
+                title={
+                  <div className="flex items-center gap-2">
+                    Symbol Picker <Badge variant="secondary" className="bg-amber-500/10 text-amber-600 dark:text-amber-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">Soon</Badge>
+                  </div>
+                }
+                description="Access a massive library of exclusive symbols and text faces."
+                header={
+                  <div className="h-40 bg-amber-500/10 dark:bg-amber-500/5 rounded-xl flex items-center justify-center border border-amber-500/10 transition-colors group-hover:bg-amber-500/20">
+                    <Search className="h-12 w-12 text-amber-500" />
+                  </div>
+                }
+                icon={<Search className="h-4 w-4 text-amber-500" />}
+                className="h-full"
+              />
             </div>
 
-            <BentoGrid>
-              <Link href="/fancy-text" className="md:col-span-2">
-                <BentoGridItem
-                  title="Fancy Text Decorator"
-                  description="Chuyển đổi văn bản sang các ký tự Unicode nghệ thuật. Hỗ trợ hơn 10 kiểu dáng vả hàng trăm ký tự đặc biệt."
-                  header={<div className="h-32 bg-zinc-100 dark:bg-zinc-900 rounded-xl flex items-center justify-center">
-                    <Wand2 className="h-12 w-12 text-zinc-300 dark:text-zinc-700" />
-                  </div>}
-                  icon={<Wand2 className="h-5 w-5 text-indigo-500" />}
-                  className="h-full border-zinc-900/10 dark:border-zinc-100/10 hover:border-zinc-900/20 dark:hover:border-zinc-100/20"
-                />
-              </Link>
-              <div className="cursor-not-allowed grayscale">
-                <BentoGridItem
-                  title={
-                    <div className="flex items-center gap-2">
-                      Symbol Picker <Badge variant="secondary" className="text-[10px] h-4 px-1 rounded-sm uppercase">Soon</Badge>
-                    </div>
-                  }
-                  description="Thư viện ký tự đặc biệt, emoji and text face phong phú nhất."
-                  header={<div className="h-32 bg-zinc-50 dark:bg-zinc-900/50 rounded-xl flex items-center justify-center">
-                    <Search className="h-12 w-12 text-zinc-200 dark:text-zinc-800" />
-                  </div>}
-                  icon={<Search className="h-5 w-5" />}
-                />
-              </div>
-              <div className="cursor-not-allowed grayscale">
-                <BentoGridItem
-                  title={
-                    <div className="flex items-center gap-2">
-                      Bio Generator <Badge variant="secondary" className="text-[10px] h-4 px-1 rounded-sm uppercase">Soon</Badge>
-                    </div>
-                  }
-                  description="Tự động tạo tiểu sử ấn tượng cho profile cá nhân của bạn."
-                  header={<div className="h-32 bg-zinc-50 dark:bg-zinc-900/50 rounded-xl flex items-center justify-center">
-                    <PenTool className="h-12 w-12 text-zinc-200 dark:text-zinc-800" />
-                  </div>}
-                  icon={<PenTool className="h-5 w-5" />}
-                />
-              </div>
-              <div className="md:col-span-2 cursor-not-allowed grayscale">
-                <BentoGridItem
-                  title={
-                    <div className="flex items-center gap-2">
-                      Font Explorer (Local Preview) <Badge variant="secondary" className="text-[10px] h-4 px-1 rounded-sm uppercase">Soon</Badge>
-                    </div>
-                  }
-                  description="Xem trước và kiểm tra các font chữ nội bộ của dự án trước khi sử dụng."
-                  header={<div className="h-32 bg-zinc-50 dark:bg-zinc-900/50 rounded-xl flex items-center justify-center">
-                    <Type className="h-12 w-12 text-zinc-200 dark:text-zinc-800" />
-                  </div>}
-                  icon={<Type className="h-5 w-5" />}
-                />
-              </div>
-            </BentoGrid>
-           </div>
-        </section>
+            <div className="opacity-70 group">
+              <BentoGridItem
+                title={
+                  <div className="flex items-center gap-2">
+                    Bio Generator <Badge variant="secondary" className="bg-rose-500/10 text-rose-600 dark:text-rose-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">Soon</Badge>
+                  </div>
+                }
+                description="AI-powered profile optimization to grow your audience."
+                header={
+                  <div className="h-40 bg-rose-500/10 dark:bg-rose-500/5 rounded-xl flex items-center justify-center border border-rose-500/10 transition-colors group-hover:bg-rose-500/20">
+                    <PenTool className="h-12 w-12 text-rose-500" />
+                  </div>
+                }
+                icon={<PenTool className="h-4 w-4 text-rose-500" />}
+                className="h-full"
+              />
+            </div>
 
-        {/* Standard Info Highlights */}
-        <section id="about" className="py-32 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/50">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-              <div className="space-y-6">
-                <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
-                  <Shield className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
-                </div>
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Chuẩn Unicode</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-lg">
-                  Tất cả font chữ đều dựa trên chuẩn Unicode, đảm bảo hiển thị đồng nhất trên mội thiết bị và mạng xã hội.
-                </p>
+            <Link href="#" className="md:col-span-2 opacity-70 group cursor-not-allowed">
+              <BentoGridItem
+                title={
+                  <div className="flex items-center gap-2">
+                    Growth Trends <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">Soon</Badge>
+                  </div>
+                }
+                description="Real-time analytics and predictive trends for modern creators."
+                header={
+                  <div className="h-40 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-xl flex items-center justify-center border border-emerald-500/10 transition-colors group-hover:bg-emerald-500/20">
+                    <Sparkles className="h-12 w-12 text-emerald-500" />
+                  </div>
+                }
+                icon={<Sparkles className="h-4 w-4 text-emerald-500" />}
+                className="h-full"
+              />
+            </Link>
+          </BentoGrid>
+        </div>
+      </section>
+
+      {/* Global Standards */}
+      <section id="about" className="py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+            <div className="space-y-4">
+              <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
+                <Shield className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
               </div>
-              
-              <div className="space-y-6">
-                <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
-                  <Zap className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
-                </div>
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Nhanh & Bảo mật</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-lg">
-                  Quá trình chuyển đổi diễn ra ngay lập tức trên trình duyệt của bạn. Toàn bộ dữ liệu nằm trên thiết bị của bạn.
-                </p>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Safe & Private</h3>
+              <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-base">
+                All transformations happen on your device. We never store your content or track your data.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
+                <Zap className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
               </div>
-              
-              <div className="space-y-6">
-                <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
-                  <Sparkles className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
-                </div>
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Miễn phí 100%</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-lg">
-                  Market Tools cam kết cung cấp các công cụ miễn phí, không quảng cáo và không yêu cầu đăng ký tài khoản.
-                </p>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Instant Speed</h3>
+              <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-base">
+                Native performance that just works. No loading screens, no delays, just pure productivity.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
+                <Sparkles className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
               </div>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">100% Free</h3>
+              <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-base">
+                Professional tools shouldn&apos;t cost a fortune. Access everything with no ads and no fees.
+              </p>
             </div>
           </div>
-        </section>
-      </main>
-
-      <SiteFooter />
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
