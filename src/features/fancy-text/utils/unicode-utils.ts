@@ -37,21 +37,20 @@ const SMALL_CAPS: CharMap = {
   'A': 'ᴀ', 'B': 'ʙ', 'C': 'ᴄ', 'D': 'ᴅ', 'E': 'ᴇ', 'F': 'ғ', 'G': 'ɢ', 'H': 'ʜ', 'I': 'ɪ', 'J': 'ᴊ', 'K': 'ᴋ', 'L': 'ʟ', 'M': 'ᴍ', 'N': 'ɴ', 'O': 'ᴏ', 'P': 'ᴘ', 'Q': 'ǫ', 'R': 'ʀ', 'S': 's', 'T': 'ᴛ', 'U': 'ᴜ', 'V': 'ᴠ', 'W': 'ᴡ', 'X': 'x', 'Y': 'ʏ', 'Z': 'ᴢ'
 };
 
-const STROKE_MARK = '\u0336'; // Combining Long Strike Overlay
+const DEFAULT_STROKE = '\u0336'; // Long stroke
 
-/**
- * Advanced transform engine that decomposes Vietnamese characters (NFD)
- * and styles individual base components, preserving diacritics.
- */
-export const transformText = (text: string, map: CharMap): string => {
+export const transformText = (text: string, style: FancyStyle): string => {
   const normalized = text.normalize("NFD");
+  const map = style.map || {};
+  const strokeMark = style.mark || DEFAULT_STROKE;
   
   let result = "";
   for (const char of normalized) {
     if (char === 'Đ') {
-      result += (map['D'] || 'D') + STROKE_MARK;
+        // Use custom stroke if defined for style
+        result += (map['D'] || 'D') + strokeMark;
     } else if (char === 'đ') {
-      result += (map['d'] || 'd') + STROKE_MARK;
+        result += (map['d'] || 'd') + strokeMark;
     } else if (map[char]) {
       result += map[char];
     } else {
@@ -70,16 +69,16 @@ export const combineWithMarks = (text: string, mark: string): string => {
 };
 
 export const styles: FancyStyle[] = [
-  // --- ROYAL CLASS (Latin Style) ---
-  { name: 'Royal Fraktur', map: FRAKTUR_BOLD, isSafe: true },
-  { name: 'Luxury Script', map: SCRIPT_BOLD, isSafe: true },
-  { name: 'Modern Hollow', map: DOUBLE_STRUCK, isSafe: true },
-  { name: 'Premium Bold', map: SANS_BOLD, isSafe: true },
-  { name: 'Italian Classy', map: SANS_ITALIC, isSafe: true },
-  { name: 'Serif Bold', map: SERIF_BOLD, isSafe: true },
-  { name: 'Small Caps', map: SMALL_CAPS, isSafe: true },
+  // --- ROYAL CLASS (Styled Marks) ---
+  { name: 'Royal Fraktur', map: FRAKTUR_BOLD, mark: '\u0335', isSafe: true }, // Short stroke for Fraktur
+  { name: 'Luxury Script', map: SCRIPT_BOLD, mark: '\u0337', isSafe: true },  // Slanted slash for Script
+  { name: 'Modern Hollow', map: DOUBLE_STRUCK, mark: '\u0335', isSafe: true },
+  { name: 'Premium Bold', map: SANS_BOLD, mark: '\u0335', isSafe: true },
+  { name: 'Italian Classy', map: SANS_ITALIC, mark: '\u0337', isSafe: true },
+  { name: 'Serif Bold', map: SERIF_BOLD, mark: '\u0335', isSafe: true },
+  { name: 'Small Caps', map: SMALL_CAPS, mark: '\u0336', isSafe: true },
 
-  // --- ELEGANT FRAMES (Great for VN) ---
+  // --- ELEGANT FRAMES ---
   { name: 'Sparkle Look', left: '✧ ', right: ' ✧', isSafe: true },
   { name: 'Royal Crest', left: '⚜ ', right: ' ⚜', isSafe: true },
   { name: 'Warrior Edge', left: '⚔ ', right: ' ⚔', isSafe: true },
@@ -89,12 +88,11 @@ export const styles: FancyStyle[] = [
   { name: 'Angular Flow', left: '《 ', right: ' 》', isSafe: true },
   { name: 'Focus Frame', left: '【 ', right: ' 】', isSafe: true },
 
-  // --- MINIMALIST (Clean) ---
+  // --- MINIMALIST ---
   { name: 'Bullet Point', left: '• ', right: ' •', isSafe: true },
   { name: 'Pillar Style', left: '┋ ', right: ' ┋', isSafe: true },
   { name: 'Side Arrow', left: '› ', right: ' ‹', isSafe: true },
   { name: 'Star Icon', left: '★ ', right: ' ★', isSafe: true },
-  { name: 'Moon Night', left: '☾ ', right: ' ☽', isSafe: true },
 
   // --- SUBTLE MARKS ---
   { name: 'Elite Macron', mark: '\u0304', isSafe: true },

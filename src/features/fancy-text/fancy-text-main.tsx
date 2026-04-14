@@ -16,7 +16,7 @@ export const FancyTextMain = () => {
     let result = baseText;
 
     if (style.map) {
-      result = transformText(baseText, style.map);
+      result = transformText(baseText, style);
     } else if (style.mark) {
       result = combineWithMarks(baseText, style.mark);
     }
