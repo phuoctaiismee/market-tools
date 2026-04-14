@@ -5,17 +5,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { styles, decorations, transformText, combineWithMarks } from "./utils/unicode-utils";
 import { FancyItem } from "./components/fancy-item";
 import { Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const FancyTextMain = () => {
   const [inputText, setInputText] = useState("");
+  const t = useTranslations("fancy_text");
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8">
       {/* Simple Input Section */}
-
       <div className="relative shadow rounded-lg">
         <Textarea
-          placeholder="Type something amazing here..."
+          placeholder={t("textarea_placeholder")}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           className="min-h-[100px] resize-none p-4"
@@ -25,12 +26,11 @@ export const FancyTextMain = () => {
         </div>
       </div>
 
-
       {/* Results List */}
       <div className="space-y-6 pt-4 max-w-2xl mx-auto">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-500">Pick Style</h3>
-          <span className="text-xs text-zinc-400 font-mono italic">Results update as you type</span>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-500">{t("results_title")}</h3>
+          <span className="text-xs text-zinc-400 font-mono italic">{t("results_hint")}</span>
         </div>
 
         <div className="space-y-3">
@@ -38,8 +38,8 @@ export const FancyTextMain = () => {
           {decorations.map((deco, index) => (
             <FancyItem
               key={`deco-${index}`}
-              title="Decorated"
-              content={`${deco.left}${inputText || "Sample Text"}${deco.right}`}
+              title={t("style_decorated")}
+              content={`${deco.left}${inputText || t("sample_text")}${deco.right}`}
             />
           ))}
 
@@ -49,9 +49,9 @@ export const FancyTextMain = () => {
               key={index}
               title={style.name}
               content={
-                style.map
-                  ? transformText(inputText || "Sample Text", style.map)
-                  : combineWithMarks(inputText || "Sample Text", style.mark!)
+                style.map 
+                  ? transformText(inputText || t("sample_text"), style.map)
+                  : combineWithMarks(inputText || t("sample_text"), style.mark!)
               }
             />
           ))}

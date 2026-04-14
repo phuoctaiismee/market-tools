@@ -1,10 +1,14 @@
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { ArrowRight, Sparkles, Shield, Zap, Wand2, Search, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BentoGrid, BentoGridItem } from "@/components/shared/bento-grid";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("home");
+  const common = useTranslations("common");
+
   return (
     <>
       {/* Simplified Functional Hero Section */}
@@ -13,31 +17,30 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-bold text-zinc-500 uppercase tracking-widest">
               <Sparkles className="h-3.5 w-3.5" />
-              <span>Creative Toolkit for Content Creators</span>
+              <span>{t("hero_tagline")}</span>
             </div>
           </div>
           
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-black tracking-tight text-zinc-900 dark:text-zinc-100">
-              The Essential Arsenal <br className="hidden md:block" />
-              for Modern Creators.
+              {t("hero_title_1")} <br className="hidden md:block" />
+              {t("hero_title_2")}
             </h1>
             
             <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto font-medium leading-relaxed">
-              Boost your creative workflow with professional tools for text transformation, 
-              design assets, and growth indicators. Simple, fast, and free forever.
+              {t("hero_description")}
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button asChild size="lg" className="h-14 px-8 rounded-2xl bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 text-lg font-bold group">
               <Link href="#tools">
-                Explore Tools
+                {common("explore_tools")}
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-14 px-8 rounded-2xl border-zinc-200 dark:border-zinc-800 text-lg font-semibold">
-               <Link href="/fancy-text">Launch Fancy Text</Link>
+               <Link href="/fancy-text">{common("launch_app")}</Link>
             </Button>
           </div>
         </div>
@@ -47,17 +50,17 @@ export default function Home() {
       <section id="tools" className="py-24 container mx-auto px-4">
         <div className="space-y-16">
           <div className="text-center space-y-3">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight">Our Ecosystem</h2>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight">{t("ecosystem_title")}</h2>
             <p className="text-zinc-500 dark:text-zinc-400 text-lg max-w-xl mx-auto">
-              Everything you need to leave a mark on the digital landscape.
+              {t("ecosystem_description")}
             </p>
           </div>
 
           <BentoGrid className="max-w-6xl">
             <Link href="/fancy-text" className="md:col-span-2 group">
               <BentoGridItem
-                title="Fancy Text Decorator"
-                description="Transform your identity with aesthetic Unicode styles. Perfect for social bios and standout posts."
+                title={t("fancy_text_title")}
+                description={t("fancy_text_description")}
                 header={
                   <div className="h-40 bg-violet-500/10 dark:bg-violet-500/5 rounded-xl flex items-center justify-center border border-violet-500/10 transition-colors group-hover:bg-violet-500/20">
                     <Wand2 className="h-12 w-12 text-violet-500" />
@@ -72,10 +75,10 @@ export default function Home() {
               <BentoGridItem
                 title={
                   <div className="flex items-center gap-2">
-                    Symbol Picker <Badge variant="secondary" className="bg-amber-500/10 text-amber-600 dark:text-amber-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">Soon</Badge>
+                    {t("symbol_picker_title")} <Badge variant="secondary" className="bg-amber-500/10 text-amber-600 dark:text-amber-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">{common("soon")}</Badge>
                   </div>
                 }
-                description="Access a massive library of exclusive symbols and text faces."
+                description={t("symbol_picker_description")}
                 header={
                   <div className="h-40 bg-amber-500/10 dark:bg-amber-500/5 rounded-xl flex items-center justify-center border border-amber-500/10 transition-colors group-hover:bg-amber-500/20">
                     <Search className="h-12 w-12 text-amber-500" />
@@ -90,10 +93,10 @@ export default function Home() {
               <BentoGridItem
                 title={
                   <div className="flex items-center gap-2">
-                    Bio Generator <Badge variant="secondary" className="bg-rose-500/10 text-rose-600 dark:text-rose-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">Soon</Badge>
+                    {t("bio_generator_title")} <Badge variant="secondary" className="bg-rose-500/10 text-rose-600 dark:text-rose-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">{common("soon")}</Badge>
                   </div>
                 }
-                description="AI-powered profile optimization to grow your audience."
+                description={t("bio_generator_description")}
                 header={
                   <div className="h-40 bg-rose-500/10 dark:bg-rose-500/5 rounded-xl flex items-center justify-center border border-rose-500/10 transition-colors group-hover:bg-rose-500/20">
                     <PenTool className="h-12 w-12 text-rose-500" />
@@ -108,10 +111,10 @@ export default function Home() {
               <BentoGridItem
                 title={
                   <div className="flex items-center gap-2">
-                    Growth Trends <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">Soon</Badge>
+                    {t("growth_trends_title")} <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-none px-1.5 py-0 h-4 uppercase text-[9px] font-black">{common("soon")}</Badge>
                   </div>
                 }
-                description="Real-time analytics and predictive trends for modern creators."
+                description={t("growth_trends_description")}
                 header={
                   <div className="h-40 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-xl flex items-center justify-center border border-emerald-500/10 transition-colors group-hover:bg-emerald-500/20">
                     <Sparkles className="h-12 w-12 text-emerald-500" />
@@ -133,9 +136,9 @@ export default function Home() {
               <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
                 <Shield className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
               </div>
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Safe & Private</h3>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">{t("feature_safe_title")}</h3>
               <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-base">
-                All transformations happen on your device. We never store your content or track your data.
+                {t("feature_safe_description")}
               </p>
             </div>
             
@@ -143,9 +146,9 @@ export default function Home() {
               <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
                 <Zap className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
               </div>
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Instant Speed</h3>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">{t("feature_speed_title")}</h3>
               <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-base">
-                Native performance that just works. No loading screens, no delays, just pure productivity.
+                {t("feature_speed_description")}
               </p>
             </div>
             
@@ -153,9 +156,9 @@ export default function Home() {
               <div className="bg-zinc-100 dark:bg-zinc-900 w-12 h-12 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 mx-auto md:mx-0">
                 <Sparkles className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
               </div>
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">100% Free</h3>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">{t("feature_free_title")}</h3>
               <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-base">
-                Professional tools shouldn&apos;t cost a fortune. Access everything with no ads and no fees.
+                {t("feature_free_description")}
               </p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link, usePathname, useRouter } from "@/navigation";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -15,10 +15,15 @@ import {
 import { Sparkles, Wand2, Search, Type, PenTool } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "../ui/button";
+import { buttonVariants, Button } from "../ui/button";
+import { useTranslations, useLocale } from "next-intl";
 
 export const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
+  const t = useTranslations("common");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +32,10 @@ export const SiteHeader = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const switchLocale = (nextLocale: "en" | "vi") => {
+    router.replace(pathname, { locale: nextLocale });
+  };
 
   return (
     <>
@@ -45,13 +54,13 @@ export const SiteHeader = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link href="/" className={cn(navigationMenuTriggerStyle(), "bg-transparent h-10 px-4")}>
-                      Home
+                      {t("home")}
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent h-10 px-4">Tools</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="bg-transparent h-10 px-4">{t("tools")}</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <li className="row-span-3">
@@ -70,9 +79,9 @@ export const SiteHeader = () => {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem title="Symbol Picker" icon={<Search className="h-4 w-4" />} comingSoon />
-                      <ListItem title="Bio Generator" icon={<PenTool className="h-4 w-4" />} comingSoon />
-                      <ListItem title="Font Explorer" icon={<Type className="h-4 w-4" />} comingSoon />
+                      <ListItem title="Symbol Picker" icon={<Search className="h-4 w-4" />} comingSoon t_soon={t("soon")} />
+                      <ListItem title="Bio Generator" icon={<PenTool className="h-4 w-4" />} comingSoon t_soon={t("soon")} />
+                      <ListItem title="Font Explorer" icon={<Type className="h-4 w-4" />} comingSoon t_soon={t("soon")} />
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -80,7 +89,7 @@ export const SiteHeader = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link href="/about" className={cn(navigationMenuTriggerStyle(), "bg-transparent h-10 px-4")}>
-                      About
+                      {t("about")}
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -89,10 +98,15 @@ export const SiteHeader = () => {
           </div>
 
           <div className="flex items-center gap-4">
+            {/* Locale Switcher */}
+            <Button variant="outline" size="icon" onClick={() => switchLocale(locale === "en" ? "vi" : "en")} >
+              <span className="">{locale === "en" ? "EN" : "VI"}</span>
+            </Button>
+
             <ModeToggle />
             <nav className="flex items-center gap-2">
               <Link href="/fancy-text" className={buttonVariants({ variant: "default", size: "lg" })}>
-                Try App
+                {t("try_app")}
               </Link>
             </nav>
           </div>
@@ -103,7 +117,7 @@ export const SiteHeader = () => {
   );
 };
 
-const ListItem = ({ title, icon, comingSoon }: { title: string; icon: React.ReactNode; comingSoon?: boolean }) => {
+const ListItem = ({ title, icon, comingSoon, t_soon }: { title: string; icon: React.ReactNode; comingSoon?: boolean; t_soon: string }) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -115,7 +129,7 @@ const ListItem = ({ title, icon, comingSoon }: { title: string; icon: React.Reac
             <span className="text-zinc-500">{icon}</span>
             <div className="text-sm font-bold leading-none">{title}</div>
             {comingSoon && (
-              <Badge variant="secondary">Soon</Badge>
+              <Badge variant="secondary">{t_soon}</Badge>
             )}
           </div>
         </div>

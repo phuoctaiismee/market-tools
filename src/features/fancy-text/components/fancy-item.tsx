@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface FancyItemProps {
   title: string;
@@ -13,11 +14,12 @@ interface FancyItemProps {
 
 export const FancyItem = ({ title, content }: FancyItemProps) => {
   const [copied, setCopied] = useState(false);
+  const t = useTranslations("common");
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(content);
     setCopied(true);
-    toast.success("Copied!", {
+    toast.success(t("copied"), {
       description: title,
       duration: 1000,
     });
@@ -31,7 +33,7 @@ export const FancyItem = ({ title, content }: FancyItemProps) => {
           {title}
         </span>
         <p className="text-xl md:text-2xl wrap-break-word truncate text-zinc-900 dark:text-zinc-100 pr-4">
-          {content || "Preview..."}
+          {content || t("preview")}
         </p>
       </div>
 
@@ -46,7 +48,7 @@ export const FancyItem = ({ title, content }: FancyItemProps) => {
         ) : (
           <Copy className="h-5 w-5" />
         )}
-        {copied ? "Copied" : "Copy"}
+        {copied ? t("copied") : t("copy")}
       </Button>
     </div>
   );
