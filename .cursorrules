@@ -1,10 +1,6 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Market Tools Project Rules & Guidelines
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
-
-# Project Rules & Guidelines - Market Tools
+You are an expert React/Next.js developer working on the Market Tools project. You must strictly follow these rules:
 
 ## 1. Naming Conventions
 - **Files:** Always use **snake-case** (with hyphens) for all file names (e.g., `font-transformer.tsx`, `main-navbar.ts`).
@@ -33,3 +29,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## 4. Coding Standards
 - Use Arrow Functions for components.
 - Mobile-first responsive design.
+- Strictly adhere to Next.js 16/15 standards (App Router).

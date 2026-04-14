@@ -1,10 +1,11 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+---
+name: market-tools-standards
+description: Project specific naming conventions, architecture, and design guidelines for Market Tools. Ensure all code follows snake-case files, PascalCase components, and feature-driven architecture.
+---
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+# Market Tools Standards
 
-# Project Rules & Guidelines - Market Tools
+This skill provides the mandatory coding and design standards for the Market Tools project. Use this whenever creating new components, features, or modifying the UI.
 
 ## 1. Naming Conventions
 - **Files:** Always use **snake-case** (with hyphens) for all file names (e.g., `font-transformer.tsx`, `main-navbar.ts`).
@@ -33,3 +34,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## 4. Coding Standards
 - Use Arrow Functions for components.
 - Mobile-first responsive design.
+- Ensure all interactive elements have unique IDs for testing.
