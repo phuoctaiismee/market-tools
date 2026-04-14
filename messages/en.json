@@ -60,7 +60,9 @@
     "description": "Transform your ordinary text into extraordinary styles suitable for any social platform.",
     "textarea_placeholder": "Type something amazing here...",
     "results_title": "Pick Style",
-    "results_hint": "Results update as you type",
+    "results_hint": "Click button to copy",
+    "vn_safe_title": "Vietnamese Compatibility",
+    "vn_safe_description": "All styles are now optimized for perfect Vietnamese diacritic rendering across all social platforms.",
     "style_decorated": "Decorated",
     "sample_text": "Sample Text"
   }
