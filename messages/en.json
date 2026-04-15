@@ -12,6 +12,7 @@
     "copied": "Copied",
     "preview": "Preview...",
     "privacy": "Privacy",
+    "tools_menu_description": "Quickly jump into any tool without a hierarchy—everything is equally accessible.",
     "terms": "Terms",
     "contact": "Contact",
     "twitter": "Twitter",
@@ -32,6 +33,8 @@
     "bio_generator_description": "AI-powered profile optimization to grow your audience.",
     "growth_trends_title": "Growth Trends",
     "growth_trends_description": "Real-time analytics and predictive trends for modern creators.",
+    "slug_generator_title": "Slug Generator",
+    "slug_generator_description": "Generate clean URL-friendly slugs from Vietnamese text with live preview.",
     "feature_safe_title": "Safe & Private",
     "feature_safe_description": "All transformations happen on your device. We never store your content or track your data.",
     "feature_speed_title": "Instant Speed",
@@ -65,5 +68,21 @@
     "compatibility_description": "All styles are optimized for Vietnamese diacritic rendering across social platforms.",
     "style_decorated": "Decorated",
     "sample_text": "Sample Text"
+  },
+  "slug_generator": {
+    "title": "Slug Generator",
+    "description": "Create clean slugs from Vietnamese text with a live URL preview card.",
+    "input_title_label": "Title or raw text",
+    "input_title_placeholder": "Enter a title or Vietnamese text",
+    "input_description_label": "Preview description",
+    "input_description_placeholder": "Write a short description for the preview card",
+    "slug_label": "Generated slug",
+    "slug_placeholder": "your-slug",
+    "preview_label": "Preview",
+    "preview_title_default": "Preview title goes here",
+    "preview_description_default": "A concise description will appear here to mimic a search result snippet.",
+    "sample_title": "Example title",
+    "preview_note": "Slug removes Vietnamese diacritics and converts the text into a URL-friendly format.",
+    "hint": "Slug output strips Vietnamese diacritics and converts the text into a URL-friendly format."
   }
 }

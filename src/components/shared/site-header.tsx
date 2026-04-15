@@ -12,7 +12,7 @@ import {
   NavigationMenuContent,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
-import { Sparkles, Wand2, Search, Type, PenTool } from "lucide-react";
+import { Sparkles, Wand2, Search, Type, Tag, PenTool } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants, Button } from "../ui/button";
@@ -21,6 +21,7 @@ import { useTranslations, useLocale } from "next-intl";
 export const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const t = useTranslations("common");
+  const tSlug = useTranslations("slug_generator");
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -62,27 +63,54 @@ export const SiteHeader = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="bg-transparent h-10 px-4">{t("tools")}</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-zinc-900 hover:bg-zinc-800 p-6 no-underline outline-none focus:shadow-md dark:bg-zinc-100"
-                            href="/fancy-text"
-                          >
-                            <Wand2 className="h-6 w-6 text-zinc-100 dark:text-zinc-900" />
-                            <div className="mb-2 mt-4 text-lg font-bold text-zinc-100 dark:text-zinc-900">
-                              Fancy Text
-                            </div>
-                            <p className="text-sm leading-tight text-zinc-400 dark:text-zinc-500">
-                              Professional Unicode text converter for all social platforms.
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <ListItem title="Symbol Picker" icon={<Search className="h-4 w-4" />} comingSoon t_soon={t("soon")} />
-                      <ListItem title="Bio Generator" icon={<PenTool className="h-4 w-4" />} comingSoon t_soon={t("soon")} />
-                      <ListItem title="Font Explorer" icon={<Type className="h-4 w-4" />} comingSoon t_soon={t("soon")} />
-                    </ul>
+                    <div className="grid gap-4 p-4 md:grid-cols-[280px_1fr] lg:w-[780px]">
+                      <div className="rounded-xl border border-zinc-200 bg-zinc-950/95 p-6 text-white shadow-lg dark:border-zinc-800 dark:bg-zinc-950/95">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-zinc-900 text-sky-400 mb-4">
+                          <Sparkles className="h-6 w-6" />
+                        </div>
+                        <h3 className="text-xl font-semibold tracking-tight">Market Tools</h3>
+                        <p className="mt-3 text-sm leading-6 text-zinc-300">
+                          {t("tools_menu_description")}
+                        </p>
+                        <div className="mt-6 flex flex-col gap-3 text-sm text-zinc-400">
+                          <div className="rounded-2xl bg-zinc-900/80 p-3">All tools are equal access — no primary or secondary hierarchy.</div>
+                        </div>
+                      </div>
+
+                      <div className="grid gap-3 sm:grid-cols-2">
+                          <NavigationMenuLink asChild>
+                            <Link
+                              className="flex items-start h-full w-full select-none flex-col justify-between rounded-xl border border-zinc-200 bg-white p-5 text-left text-zinc-900 no-underline outline-none transition hover:border-sky-500 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                              href="/fancy-text"
+                            >
+                              <div className="flex items-center gap-3">
+                                <Wand2 className="h-5 w-5 text-violet-500" />
+                                <span className="text-lg font-semibold">Fancy Text</span>
+                              </div>
+                              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+                                Professional Unicode text converter for all social platforms.
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              className="flex items-start h-full w-full select-none flex-col justify-between rounded-xl border border-zinc-200 bg-white p-5 text-left text-zinc-900 no-underline outline-none transition hover:border-sky-500 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                              href="/slug-generator"
+                            >
+                              <div className="flex items-center gap-3">
+                                <Tag className="h-5 w-5 text-sky-500" />
+                                <span className="text-lg font-semibold">{tSlug("title")}</span>
+                              </div>
+                              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+                                Create clean URL-friendly slugs for Vietnamese text.
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                          <ListItem title="Symbol Picker" icon={<Search className="h-5 w-5" />} comingSoon t_soon={t("soon")} />
+                          <ListItem title="Bio Generator" icon={<PenTool className="h-5 w-5" />} comingSoon t_soon={t("soon")} />
+                          <ListItem title="Font Explorer" icon={<Type className="h-5 w-5" />} comingSoon t_soon={t("soon")} />
+                      </div>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
@@ -119,11 +147,11 @@ export const SiteHeader = () => {
 
 const ListItem = ({ title, icon, comingSoon, t_soon }: { title: string; icon: React.ReactNode; comingSoon?: boolean; t_soon: string }) => {
   return (
-    <li>
+    <div>
       <NavigationMenuLink asChild>
         <div className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-          comingSoon ? "opacity-80 cursor-not-allowed" : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+          "block select-none space-y-1 rounded-xl border border-zinc-200 bg-white p-4 leading-none text-left text-zinc-900 no-underline outline-none transition hover:border-sky-500 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100",
+          comingSoon ? "opacity-80 cursor-not-allowed" : ""
         )}>
           <div className="flex items-center gap-2">
             <span className="text-zinc-500">{icon}</span>
@@ -134,6 +162,6 @@ const ListItem = ({ title, icon, comingSoon, t_soon }: { title: string; icon: Re
           </div>
         </div>
       </NavigationMenuLink>
-    </li>
+    </div>
   );
 };

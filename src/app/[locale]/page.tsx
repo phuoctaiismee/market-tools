@@ -1,5 +1,5 @@
 import { Link } from "@/navigation";
-import { ArrowRight, Sparkles, Shield, Zap, Wand2, Search, PenTool } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Zap, Wand2, Search, Tag, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BentoGrid, BentoGridItem } from "@/components/shared/bento-grid";
 import { Badge } from "@/components/ui/badge";
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
 
           <BentoGrid className="max-w-6xl">
-            <Link href="/fancy-text" className="md:col-span-2 group">
+              <Link href="/fancy-text" className="group">
               <BentoGridItem
                 title={t("fancy_text_title")}
                 description={t("fancy_text_description")}
@@ -70,7 +70,21 @@ export default function Home() {
                 className="h-full hover:border-violet-500/30 transition-all shadow-sm hover:shadow-md"
               />
             </Link>
-            
+
+            <Link href="/slug-generator" className="group">
+              <BentoGridItem
+                title={t("slug_generator_title")}
+                description={t("slug_generator_description")}
+                header={
+                  <div className="h-40 bg-sky-500/10 dark:bg-sky-500/5 rounded-xl flex items-center justify-center border border-sky-500/10 transition-colors group-hover:bg-sky-500/20">
+                    <Tag className="h-12 w-12 text-sky-500" />
+                  </div>
+                }
+                icon={<Tag className="h-4 w-4 text-sky-500" />}
+                className="h-full hover:border-sky-500/30 transition-all shadow-sm hover:shadow-md"
+              />
+            </Link>
+
             <div className="opacity-70 group">
               <BentoGridItem
                 title={

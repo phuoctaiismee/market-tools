@@ -12,6 +12,7 @@
     "copied": "Đã sao chép",
     "preview": "Xem trước...",
     "privacy": "Bảo mật",
+    "tools_menu_description": "Truy cập nhanh vào mọi công cụ, không có công cụ chính hay phụ.",
     "terms": "Điều khoản",
     "contact": "Liên hệ",
     "twitter": "Twitter",
@@ -32,6 +33,8 @@
     "bio_generator_description": "Tối ưu hóa hồ sơ bằng AI để tăng trưởng lượng người theo dõi của bạn.",
     "growth_trends_title": "Xu hướng tăng trưởng",
     "growth_trends_description": "Phân tích thời gian thực và dự báo xu hướng cho các nhà sáng tạo hiện đại.",
+    "slug_generator_title": "Trình tạo slug",
+    "slug_generator_description": "Tạo slug thân thiện với URL từ văn bản tiếng Việt với xem trước tức thì.",
     "feature_safe_title": "An toàn & Riêng tư",
     "feature_safe_description": "Mọi quá trình chuyển đổi diễn ra trên thiết bị của bạn. Chúng tôi không bao giờ lưu trữ nội dung hoặc theo dõi dữ liệu của bạn.",
     "feature_speed_title": "Tốc độ tức thì",
@@ -65,5 +68,21 @@
     "compatibility_description": "Tất cả các style đã được tối ưu hóa để hiển thị hoàn hảo tiếng Việt có dấu trên mọi nền tảng.",
     "style_decorated": "Trang trí",
     "sample_text": "Văn bản mẫu"
+  },
+  "slug_generator": {
+    "title": "Trình tạo slug",
+    "description": "Tạo slug sạch cho URL từ văn bản tiếng Việt với xem trước tức thì.",
+    "input_title_label": "Tiêu đề hoặc văn bản",
+    "input_title_placeholder": "Nhập tiêu đề hoặc văn bản tiếng Việt",
+    "input_description_label": "Mô tả xem trước",
+    "input_description_placeholder": "Viết mô tả ngắn cho thẻ xem trước",
+    "slug_label": "Slug đã tạo",
+    "slug_placeholder": "your-slug",
+    "preview_label": "Xem trước",
+    "preview_title_default": "Tiêu đề xem trước hiển thị ở đây",
+    "preview_description_default": "Một mô tả ngắn sẽ xuất hiện ở đây để giả lập đoạn trích kết quả tìm kiếm.",
+    "sample_title": "Tiêu đề mẫu",
+    "preview_note": "Slug loại bỏ dấu tiếng Việt và chuyển văn bản sang định dạng thân thiện với URL.",
+    "hint": "Slug loại bỏ dấu tiếng Việt và chuyển văn bản sang định dạng thân thiện với URL."
   }
 }

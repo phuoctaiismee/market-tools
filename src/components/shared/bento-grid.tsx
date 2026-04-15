@@ -8,7 +8,7 @@ interface BentoGridProps {
 
 export const BentoGrid = ({ className, children }: BentoGridProps) => {
   return (
-    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto px-4 sm:px-6", className)}>
+    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto px-4 sm:px-6 items-stretch", className)}>
       {children}
     </div>
   );
@@ -32,7 +32,7 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 flex flex-col justify-between space-y-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors",
+        "min-h-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 flex flex-col justify-between space-y-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors",
         className
       )}
     >
