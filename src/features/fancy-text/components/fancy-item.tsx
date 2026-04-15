@@ -11,10 +11,10 @@ import { Badge } from "@/components/ui/badge";
 interface FancyItemProps {
   title: string;
   content: string;
-  isSafe?: boolean;
+  badge?: string;
 }
 
-export const FancyItem = ({ title, content, isSafe }: FancyItemProps) => {
+export const FancyItem = ({ title, content, badge }: FancyItemProps) => {
   const [copied, setCopied] = useState(false);
   const t = useTranslations("common");
 
@@ -36,9 +36,9 @@ export const FancyItem = ({ title, content, isSafe }: FancyItemProps) => {
           <span className="text-[9px] uppercase font-black tracking-[0.2em] text-zinc-400 dark:text-zinc-600">
             {title}
           </span>
-          {isSafe && (
+          {badge && (
             <Badge className="h-4 px-1.5 text-[8px] font-black tracking-tighter bg-amber-100 text-amber-900 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-900/50 hover:bg-amber-100">
-              VN COMPATIBLE
+              {badge.toUpperCase()}
             </Badge>
           )}
         </div>

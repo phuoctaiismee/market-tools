@@ -61,8 +61,8 @@
     "textarea_placeholder": "Nhập nội dung tuyệt vời vào đây...",
     "results_title": "Chọn kiểu dáng",
     "results_hint": "Nhấp vào nút để sao chép",
-    "vn_safe_title": "Tương thích Tiếng Việt",
-    "vn_safe_description": "Tất cả các style đã được tối ưu hóa để hiển thị hoàn hảo Tiếng Việt có dấu trên mọi nền tảng.",
+    "compatibility_title": "Tương thích",
+    "compatibility_description": "Tất cả các style đã được tối ưu hóa để hiển thị hoàn hảo tiếng Việt có dấu trên mọi nền tảng.",
     "style_decorated": "Trang trí",
     "sample_text": "Văn bản mẫu"
   }

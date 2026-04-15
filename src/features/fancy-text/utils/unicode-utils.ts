@@ -1,5 +1,16 @@
 import { FancyStyle, CharMap } from "../types";
 
+const createCharMap = (upperStart: number, lowerStart: number): CharMap => {
+  const map: CharMap = {};
+
+  for (let i = 0; i < 26; i++) {
+    map[String.fromCharCode(65 + i)] = String.fromCodePoint(upperStart + i);
+    map[String.fromCharCode(97 + i)] = String.fromCodePoint(lowerStart + i);
+  }
+
+  return map;
+};
+
 // --- SANS ---
 const SANS_BOLD: CharMap = {
   'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭',
@@ -13,7 +24,7 @@ const SANS_ITALIC: CharMap = {
 };
 
 const SERIF_BOLD: CharMap = {
-  'A': '𝐀', 'B': '𝐁', 'C': '𝐂', 'D': '𝐃', 'E': '𝐄', 'F': '𝐅', 'G': '𝐆', 'H': '𝐇', 'I': '𝐈', 'J': '𝐉', 'K': '𝐊', 'L': '𝐋', 'M': '𝐌', 'N': '𝐍', 'O': '𝐎', 'P': '𝐏', 'Q': '𝐐', 'R': '𝐑', 'S': '𝐒', 'T': '𝐓', 'U': '𝐔', 'V': '𝐕', 'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝙕',
+  'A': '𝐀', 'B': '𝐁', 'C': '𝐂', 'D': '𝐃', 'E': '𝐄', 'F': '𝐅', 'G': '𝐆', 'H': '𝐇', 'I': '𝐈', 'J': '𝐉', 'K': '𝐊', 'L': '𝐋', 'M': '𝐌', 'N': '𝐍', 'O': '𝐎', 'P': '𝐏', 'Q': '𝐐', 'R': '𝐑', 'S': '𝐒', 'T': '𝐓', 'U': '𝐔', 'V': '𝐕', 'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝐙',
   'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡', 'i': '𝐢', 'j': '𝐣', 'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭', 'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳'
 };
 
@@ -37,66 +48,121 @@ const SMALL_CAPS: CharMap = {
   'A': 'ᴀ', 'B': 'ʙ', 'C': 'ᴄ', 'D': 'ᴅ', 'E': 'ᴇ', 'F': 'ғ', 'G': 'ɢ', 'H': 'ʜ', 'I': 'ɪ', 'J': 'ᴊ', 'K': 'ᴋ', 'L': 'ʟ', 'M': 'ᴍ', 'N': 'ɴ', 'O': 'ᴏ', 'P': 'ᴘ', 'Q': 'ǫ', 'R': 'ʀ', 'S': 's', 'T': 'ᴛ', 'U': 'ᴜ', 'V': 'ᴠ', 'W': 'ᴡ', 'X': 'x', 'Y': 'ʏ', 'Z': 'ᴢ'
 };
 
+const MATH_ITALIC: CharMap = createCharMap(0x1D434, 0x1D44E);
+const MATH_BOLD_ITALIC: CharMap = createCharMap(0x1D468, 0x1D482);
+const SANS_BOLD_ITALIC: CharMap = createCharMap(0x1D63C, 0x1D656);
+
+const CIRCLED: CharMap = {
+  'A': 'Ⓐ', 'B': 'Ⓑ', 'C': 'Ⓒ', 'D': 'Ⓓ', 'E': 'Ⓔ', 'F': 'Ⓕ', 'G': 'Ⓖ', 'H': 'Ⓗ', 'I': 'Ⓘ', 'J': 'Ⓙ', 'K': 'Ⓚ', 'L': 'Ⓛ', 'M': 'Ⓜ', 'N': 'Ⓝ', 'O': 'Ⓞ', 'P': 'Ⓟ', 'Q': 'Ⓠ', 'R': 'Ⓡ', 'S': 'Ⓢ', 'T': 'Ⓣ', 'U': 'Ⓤ', 'V': 'Ⓥ', 'W': 'Ⓦ', 'X': 'Ⓧ', 'Y': 'Ⓨ', 'Z': 'Ⓩ',
+  'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ',
+  '0': '⓪', '1': '①', '2': '②', '3': '③', '4': '④', '5': '⑤', '6': '⑥', '7': '⑦', '8': '⑧', '9': '⑨'
+};
+
+const FULLWIDTH: CharMap = {
+  'A': 'Ａ', 'B': 'Ｂ', 'C': 'Ｃ', 'D': 'Ｄ', 'E': 'Ｅ', 'F': 'Ｆ', 'G': 'Ｇ', 'H': 'Ｈ', 'I': 'Ｉ', 'J': 'Ｊ', 'K': 'Ｋ', 'L': 'Ｌ', 'M': 'Ｍ', 'N': 'Ｎ', 'O': 'Ｏ', 'P': 'Ｐ', 'Q': 'Ｑ', 'R': 'Ｒ', 'S': 'Ｓ', 'T': 'Ｔ', 'U': 'Ｕ', 'V': 'Ｖ', 'W': 'Ｗ', 'X': 'Ｘ', 'Y': 'Ｙ', 'Z': 'Ｚ',
+  'a': 'ａ', 'b': 'ｂ', 'c': 'ｃ', 'd': 'ｄ', 'e': 'ｅ', 'f': 'ｆ', 'g': 'ｇ', 'h': 'ｈ', 'i': 'ｉ', 'j': 'ｊ', 'k': 'ｋ', 'l': 'ｌ', 'm': 'ｍ', 'n': 'ｎ', 'o': 'ｏ', 'p': 'ｐ', 'q': 'ｑ', 'r': 'ｒ', 's': 'ｓ', 't': 'ｔ', 'u': 'ｕ', 'v': 'ｖ', 'w': 'ｗ', 'x': 'ｘ', 'y': 'ｙ', 'z': 'ｚ',
+  '0': '０', '1': '１', '2': '２', '3': '３', '4': '４', '5': '５', '6': '６', '7': '７', '8': '８', '9': '９'
+};
+
+const UPSIDE_DOWN: CharMap = {
+  'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ɓ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z',
+  'A': '∀', 'B': '𐐒', 'C': 'Ɔ', 'D': '◖', 'E': 'Ǝ', 'F': 'Ⅎ', 'G': '⅁', 'H': 'H', 'I': 'I', 'J': 'ſ', 'K': 'ʞ', 'L': '˥', 'M': 'W', 'N': 'N', 'O': 'O', 'P': 'Ԁ', 'Q': 'Q', 'R': 'ᴚ', 'S': 'S', 'T': '⊥', 'U': '∩', 'V': 'Λ', 'W': 'M', 'X': 'X', 'Y': '⅄', 'Z': 'Z',
+  '0': '0', '1': 'Ɩ', '2': 'ᄅ', '3': 'Ɛ', '4': 'ㄣ', '5': 'ϛ', '6': '9', '7': 'ㄥ', '8': '8', '9': '6'
+};
+
+const ACCENTED: CharMap = {
+  'A': 'Á', 'B': 'Ɓ', 'C': 'Č', 'D': 'Đ', 'E': 'Ê', 'F': 'Ƒ', 'G': 'Ğ', 'H': 'Ħ', 'I': 'Î', 'J': 'Ĵ', 'K': 'Ķ', 'L': 'Ŀ', 'M': 'Ṁ', 'N': 'Ń', 'O': 'Ø', 'P': 'Þ', 'Q': 'Ǫ', 'R': 'Ŕ', 'S': 'Ś', 'T': 'Ť', 'U': 'Ů', 'V': 'Ṽ', 'W': 'Ŵ', 'X': 'Ẍ', 'Y': 'Ŷ', 'Z': 'Ž',
+  'a': 'á', 'b': 'ƀ', 'c': 'č', 'd': 'đ', 'e': 'ê', 'f': 'ƒ', 'g': 'ğ', 'h': 'ħ', 'i': 'î', 'j': 'ĵ', 'k': 'ķ', 'l': 'ŀ', 'm': 'ṁ', 'n': 'ń', 'o': 'ø', 'p': 'þ', 'q': 'ǫ', 'r': 'ŕ', 's': 'ś', 't': 'ť', 'u': 'ů', 'v': 'ṽ', 'w': 'ŵ', 'x': 'ẍ', 'y': 'ŷ', 'z': 'ž'
+};
+
+const SYMBOLIC: CharMap = {
+  'A': 'Λ', 'B': 'β', 'C': '☾', 'D': 'Ð', 'E': 'Ɇ', 'F': '₣', 'G': 'Ǥ', 'H': 'Ħ', 'I': 'Ɨ', 'J': 'J', 'K': '⊗', 'L': 'Ł', 'M': '₥', 'N': '₦', 'O': 'Ø', 'P': '₱', 'Q': 'Q', 'R': 'я', 'S': '§', 'T': 'Ŧ', 'U': '∪', 'V': 'Ṽ', 'W': 'Ш', 'X': 'Ж', 'Y': '¥', 'Z': 'Ẕ',
+  'a': 'α', 'b': 'Ƅ', 'c': '☾', 'd': 'đ', 'e': 'Ɇ', 'f': 'ƒ', 'g': 'ɠ', 'h': 'ħ', 'i': 'ι', 'j': 'ʝ', 'k': 'ƙ', 'l': 'ℓ', 'm': 'ɱ', 'n': 'ռ', 'o': 'σ', 'p': 'ρ', 'q': 'զ', 'r': 'я', 's': 'š', 't': 'ŧ', 'u': 'ʊ', 'v': 'ṽ', 'w': 'ɯ', 'x': 'ж', 'y': 'у', 'z': 'ƶ'
+};
+
 const DEFAULT_STROKE = '\u0336'; // Long stroke
 
 export const transformText = (text: string, style: FancyStyle): string => {
   const normalized = text.normalize("NFD");
   const map = style.map || {};
-  const strokeMark = style.mark || DEFAULT_STROKE;
-  
-  let result = "";
+  const mark = style.mark;
+  const wrapper = style.charWrap;
+  const separator = style.separator ?? "";
+
+  const slices: string[] = [];
+
   for (const char of normalized) {
-    if (char === 'Đ') {
-        // Use custom stroke if defined for style
-        result += (map['D'] || 'D') + strokeMark;
-    } else if (char === 'đ') {
-        result += (map['d'] || 'd') + strokeMark;
-    } else if (map[char]) {
-      result += map[char];
-    } else {
-      result += char;
+    if (char === ' ' || char === '\n') {
+      slices.push(char);
+      continue;
     }
+
+    let transformed = map[char] || char;
+
+    if (mark) {
+      transformed = Array.from(transformed)
+        .map((symbol) => symbol + mark)
+        .join("");
+    }
+
+    if (wrapper) {
+      transformed = `${wrapper[0]}${transformed}${wrapper[1]}`;
+    }
+
+    slices.push(transformed);
   }
-  
-  return result;
+
+  return slices.join(separator);
 };
 
 export const combineWithMarks = (text: string, mark: string): string => {
   return text
-    .split('')
-    .map(char => char + mark)
-    .join('');
+    .split("")
+    .map((char) => char === " " ? char : char + mark)
+    .join("");
 };
 
 export const styles: FancyStyle[] = [
-  // --- ROYAL CLASS (Styled Marks) ---
-  { name: 'Royal Fraktur', map: FRAKTUR_BOLD, mark: '\u0335', isSafe: true }, // Short stroke for Fraktur
-  { name: 'Luxury Script', map: SCRIPT_BOLD, mark: '\u0337', isSafe: true },  // Slanted slash for Script
-  { name: 'Modern Hollow', map: DOUBLE_STRUCK, mark: '\u0335', isSafe: true },
-  { name: 'Premium Bold', map: SANS_BOLD, mark: '\u0335', isSafe: true },
-  { name: 'Italian Classy', map: SANS_ITALIC, mark: '\u0337', isSafe: true },
-  { name: 'Serif Bold', map: SERIF_BOLD, mark: '\u0335', isSafe: true },
-  { name: 'Small Caps', map: SMALL_CAPS, mark: '\u0336', isSafe: true },
+  // --- BASIC STYLES ---
+  { name: 'Sans Serif Bold', category: 'basic', badge: 'Popular', map: SANS_BOLD, isSafe: true },
+  { name: 'Sans Serif Italic', category: 'basic', badge: 'Popular', map: SANS_ITALIC, isSafe: true },
+  { name: 'Sans Serif Bold Italic', category: 'basic', badge: 'Popular', map: SANS_BOLD_ITALIC, isSafe: true },
+  { name: 'Serif Bold', category: 'basic', map: SERIF_BOLD, isSafe: true },
+  { name: 'Math Italic', category: 'basic', map: MATH_ITALIC, isSafe: true },
+  { name: 'Math Bold Italic', category: 'basic', map: MATH_BOLD_ITALIC, isSafe: true },
+  { name: 'Small Caps', category: 'basic', map: SMALL_CAPS, isSafe: true },
+  { name: 'Circled Text', category: 'basic', map: CIRCLED, isSafe: true },
+  { name: 'Fullwidth', category: 'basic', map: FULLWIDTH, isSafe: true },
 
-  // --- ELEGANT FRAMES ---
-  { name: 'Sparkle Look', left: '✧ ', right: ' ✧', isSafe: true },
-  { name: 'Royal Crest', left: '⚜ ', right: ' ⚜', isSafe: true },
-  { name: 'Warrior Edge', left: '⚔ ', right: ' ⚔', isSafe: true },
-  { name: 'Dragon Horn', left: '꧁༺ ', right: ' ༻꧂', isSafe: true },
-  { name: 'Modern Bracket', left: '『 ', right: ' 』', isSafe: true },
-  { name: 'Gate Keeper', left: '⟦ ', right: ' ⟧', isSafe: true },
-  { name: 'Angular Flow', left: '《 ', right: ' 》', isSafe: true },
-  { name: 'Focus Frame', left: '【 ', right: ' 】', isSafe: true },
+  // --- LUXURY STYLES ---
+  { name: 'Royal Fraktur', category: 'luxury', badge: 'Luxury', map: FRAKTUR_BOLD, mark: '\u0335', isSafe: true },
+  { name: 'Luxury Script', category: 'luxury', badge: 'Luxury', map: SCRIPT_BOLD, mark: '\u0337', isSafe: true },
+  { name: 'Modern Hollow', category: 'luxury', badge: 'Luxury', map: DOUBLE_STRUCK, mark: '\u0335', isSafe: true },
+  { name: 'Accent Mix', category: 'luxury', map: ACCENTED, isSafe: true },
+  { name: 'Symbol Chain', category: 'luxury', map: SYMBOLIC, isSafe: true },
 
-  // --- MINIMALIST ---
-  { name: 'Bullet Point', left: '• ', right: ' •', isSafe: true },
-  { name: 'Pillar Style', left: '┋ ', right: ' ┋', isSafe: true },
-  { name: 'Side Arrow', left: '› ', right: ' ‹', isSafe: true },
-  { name: 'Star Icon', left: '★ ', right: ' ★', isSafe: true },
-
-  // --- SUBTLE MARKS ---
-  { name: 'Elite Macron', mark: '\u0304', isSafe: true },
-  { name: 'Minimal Dot', mark: '\u0307', isSafe: true },
+  // --- DECORATOR STYLES ---
+  { name: 'Upside Down', category: 'decorator', isSafe: true },
+  { name: 'Brackets Each', category: 'decorator', badge: 'Decorator', charWrap: ['【', '】'], separator: '', isSafe: true },
+  { name: 'Quote Blocks', category: 'decorator', badge: 'Decorator', charWrap: ['『', '』'], separator: '', isSafe: true },
+  { name: 'Sparkle Look', category: 'decorator', left: '✧ ', right: ' ✧', isSafe: true },
+  { name: 'Royal Crest', category: 'decorator', left: '⚜ ', right: ' ⚜', isSafe: true },
+  { name: 'Warrior Edge', category: 'decorator', left: '⚔ ', right: ' ⚔', isSafe: true },
+  { name: 'Dragon Horn', category: 'decorator', left: '꧁༺ ', right: ' ༻꧂', isSafe: true },
+  { name: 'Modern Bracket', category: 'decorator', left: '『 ', right: ' 』', isSafe: true },
+  { name: 'Gate Keeper', category: 'decorator', left: '⟦ ', right: ' ⟧', isSafe: true },
+  { name: 'Angular Flow', category: 'decorator', left: '《 ', right: ' 》', isSafe: true },
+  { name: 'Focus Frame', category: 'decorator', left: '【 ', right: ' 】', isSafe: true },
+  { name: 'Bullet Point', category: 'decorator', left: '• ', right: ' •', isSafe: true },
+  { name: 'Pillar Style', category: 'decorator', left: '┋ ', right: ' ┋', isSafe: true },
+  { name: 'Side Arrow', category: 'decorator', left: '› ', right: ' ‹', isSafe: true },
+  { name: 'Star Icon', category: 'decorator', left: '★ ', right: ' ★', isSafe: true },
+  { name: 'Elite Macron', category: 'decorator', mark: '\u0304', isSafe: true },
+  { name: 'Minimal Dot', category: 'decorator', mark: '\u0307', isSafe: true },
+  { name: 'Glitch Strike', category: 'decorator', mark: '\u0337', isSafe: true },
+  { name: 'Heavy Strikethrough', category: 'decorator', mark: '\u0336', isSafe: true },
+  { name: 'Heart Chain', category: 'decorator', mark: '♥', isSafe: true },
+  { name: 'Underline Dot', category: 'decorator', mark: '\u0323', isSafe: true },
 ];
 
 export const decorations: never[] = [];

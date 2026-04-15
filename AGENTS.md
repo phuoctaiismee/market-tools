@@ -19,7 +19,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
   - `hooks/`: Custom hooks for logic.
   - `utils/`: Helper functions and constants.
   - `types/`: TypeScript definitions.
-  - `index.ts`: The entry point for the feature.
+  - `index.tsx`: The entry point for the feature.
 - **Isolation:** Features should avoid importing internal components from other features. Use `src/components/shared` for common code.
 
 ## 3. Tech Stack & UI Style

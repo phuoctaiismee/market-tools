@@ -1,4 +1,4 @@
-import { FancyTextMain } from "@/features/fancy-text/fancy-text-main";
+import { FancyTextMain } from "@/features/fancy-text";
 import { useTranslations } from "next-intl";
 
 export const metadata = {

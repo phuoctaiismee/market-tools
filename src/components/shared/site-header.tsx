@@ -97,18 +97,18 @@ export const SiteHeader = () => {
             </NavigationMenu>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2.5">
             {/* Locale Switcher */}
             <Button variant="outline" size="icon" onClick={() => switchLocale(locale === "en" ? "vi" : "en")} >
               <span className="">{locale === "en" ? "EN" : "VI"}</span>
             </Button>
 
             <ModeToggle />
-            <nav className="flex items-center gap-2">
+            {/* <nav className="flex items-center gap-2">
               <Link href="/fancy-text" className={buttonVariants({ variant: "default", size: "lg" })}>
                 {t("try_app")}
               </Link>
-            </nav>
+            </nav> */}
           </div>
         </div>
       </header>

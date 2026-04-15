@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "@/providers/theme";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/shared/site-header";
 import { SiteFooter } from "@/components/shared/site-footer";
@@ -10,7 +10,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { locales } from '@/config';
 import { notFound } from 'next/navigation';
-
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
@@ -49,6 +48,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
+      data-scroll-behavior="smooth"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, geist.variable, "font-sans")}
       suppressHydrationWarning
     >
