@@ -10,6 +10,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { locales } from '@/config';
 import { notFound } from 'next/navigation';
+import { Analytics } from '@vercel/analytics/next';
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
@@ -65,6 +66,7 @@ export default async function RootLayout({
             <Toaster position="top-center" />
           </NextIntlClientProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
